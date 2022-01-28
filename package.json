@@ -1,0 +1,66 @@
+{
+  "name": "template-project",
+  "version": "1.0.0",
+  "description": "A Vue.js template project",
+  "author": "bigger <1142829292@qq.com>",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "buildTest": "vue-cli-service build  --mode buildTest",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "babel-plugin-import": "^1.12.0",
+    "better-scroll": "^1.15.2",
+    "core-js": "^2.6.5",
+    "vant": "^2.10.3",
+    "vconsole": "^3.3.4",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/cli-service": "^3.8.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-import": "^1.13.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "filemanager-webpack-plugin": "^2.0.5",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "postcss-pxtorem": "^4.0.1",
+    "vue-loader": "^14.2.2",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential"
+    ],
+    "rules": {},
+    "parserOptions": {}
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {},
+      "postcss-pxtorem": {
+        "rootValue": 16,
+        "propList": [
+          "*"
+        ]
+      }
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
