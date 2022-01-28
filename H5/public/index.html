@@ -14,23 +14,16 @@
 <!-- built files will be auto injected -->
 </body>
 <script type="text/javascript" src="webView.js"></script>
-<script type="text/javascript" src="wx.js"></script>
 
 
 <script type="text/javascript">
   // 在引用依赖的文件后，需要在 HTML 中监听 UniAppJSBridgeReady 事件触发后，才能安全调用 uni 的 API。
 
-  window.getUniMsg = function(res){
-    console.log(res)
-  }
-  getUniMsg('111')
 
   document.addEventListener('UniAppJSBridgeReady', function(e) {
     uni.getEnv(function(res) {
       console.log('当前环境：' + JSON.stringify(res));
     });
-
-
   });
 </script>
 </html>
