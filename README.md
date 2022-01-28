@@ -15,7 +15,9 @@ H5端：
 
 uniapp端：
 
-将uniapp 文件夹下的index.vue 放进去uniapp的项目。 web-veiw 的 src换成本地H5的地址。注意不要使用localhost，要使用IP。
+1、将uniapp 文件夹下的index.vue 放进去uniapp的项目。 web-veiw 的 src换成本地H5的地址。注意不要使用localhost，要使用IP。
+2、图片的选择使用到 image-tools 库，记得 npm install image-tools
+
 
 
 
