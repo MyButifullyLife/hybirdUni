@@ -55,6 +55,7 @@
 				color: #979797;
 				line-height: 44px;
 				padding-left: 15px;
+				margin-left: 5px;
 				width: 30px;
 				&.icon-close {
 					position: absolute;
@@ -156,7 +157,11 @@
 				if (this.backFun) {
 					this.backFun();
 				} else {
-					this.$router.back();
+					if(window.history.length <= 1){
+						uni.navigateBack();
+					} else {
+						this.$router.back();
+					}
 				}
 			},
 			close() {

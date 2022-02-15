@@ -33,6 +33,10 @@
             <button @click="compassFn(true)">监听罗盘</button>
             <button @click="compassFn(false)">取消监听罗盘</button>
         </div>
+        <div>
+            <p>用户信息: {{userInfo}}</p>
+            <button @click="getUser">获取用户信息</button>
+        </div>
         <div style="margin-top: 20px">
             <button @click="backTo">
                 回退
@@ -58,7 +62,8 @@
         imgObj: '',
         location: {},
         qCode: '',
-        compass: ''
+        compass: '',
+        userInfo: ''
 
       }
     },
@@ -67,10 +72,31 @@
       backTo() {
         uni.navigateBack();
       },
+      getUser() {
+        // 在uniapp底座转化为此格式
+        // uni.getStorageSync('USER_INFO');
+        this.UNI_TOOLS.uniApi({
+          apiName: 'getStorageSync',
+          params: 'USER_INFO',
+          success: (res) => {
+            console.log(res)
+            this.userInfo = res
+          }
+        })
+      },
       getImage() {
+        // 在uniapp底座转化为此格式
+        // uni.chooseImage({
+        //   count: 6, //默认9
+        //   sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
+        //   sourceType: ['album'], //从相册选择
+        //   success: function (res) {
+        //     console.log(JSON.stringify(res.tempFilePaths));
+        //   }
+        // });
         this.UNI_TOOLS.uniApi({
           apiName: 'chooseImage',
-          options: {
+          params: {
             count: 6, //默认9
             sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
             sourceType: ['album'], //从相册选择
@@ -83,7 +109,7 @@
       getLocation() {
         this.UNI_TOOLS.uniApi({
           apiName: 'getLocation',
-          options: {
+          params: {
             type: 'wgs84',
             success: (res) => {
               this.location = res
@@ -93,12 +119,16 @@
           }
         })
       },
-      compassFn(bool){
-        if(bool){
+      compassFn(bool) {
+        // 在uniapp底座转化为此格式
+        // uni.onCompassChange(function (res) {
+        //   console.log(res.direction);
+        // });
+        if (bool) {
           this.UNI_TOOLS.uniApi({
             apiName: 'onCompassChange',
             offName: 'offCompassChange',  // 取消监听的方法名要加上。 防止监听重复叠加造成APP 卡顿
-            options: (res)=>{
+            params: (res) => {
               console.log(res)
               this.compass = res.direction
             }
@@ -111,9 +141,16 @@
         }
       },
       scanCode() {
+        // 在uniapp底座转化为此格式
+        // uni.scanCode({
+        //   success: function (res) {
+        //     console.log('条码类型：' + res.scanType);
+        //     console.log('条码内容：' + res.result);
+        //   }
+        // });
         this.UNI_TOOLS.uniApi({
           apiName: 'scanCode',
-          options: {
+          params: {
             success: (res) => {
               this.qCode = res.result
               console.log('条码类型：' + res.scanType);
@@ -123,18 +160,7 @@
         })
       },
       sendMsg() {
-        // 发送了一个对象
-        uni.postMessage({
-          data: {
-            apiName: 'onCompassChange',
-            params: {
-              b: 2,
-              success2: function (e) {
-                console.log('H5', e)
-              }
-            }
-          }
-        });
+
       }
     },
     mounted() {

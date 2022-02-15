@@ -1,5 +1,5 @@
 <template>
-	<div id="app">
+	<div id="app" >
 		<transition :name='transitionName'>
 <!--			<keep-alive :include="keepAlive.value">--><!--class="child-view"-->
 				<router-view   />
